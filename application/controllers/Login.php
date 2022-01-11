@@ -59,7 +59,7 @@ class Login extends CI_Controller {
         $data = [
             'page' => "Dashboard",
             'total' => $this->User_model->getTotal(),
-            'totalkepalabagian' => $this->User_model->getTotalKepalaBagian(),
+            'totalkepalabidang' => $this->User_model->getTotalKepalaBidang(),
             'totalpimpinan' => $this->User_model->getTotalPimpinan(),
             'totalpegawai' => $this->Alternatif_model->getTotalPegawai(),
             'totalalternatif' => $this->Alternatif_model->getTotal(),
@@ -70,4 +70,3 @@ class Login extends CI_Controller {
 }
 
 /* End of file Login.php */
-?>

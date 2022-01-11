@@ -15,7 +15,7 @@
             return $this->db->count_all('user');
         }
 
-        public function getTotalKepalaBagian()
+        public function getTotalKepalaBidang()
         {
             $this->db->select('id_user');
             $this->db->from('user');

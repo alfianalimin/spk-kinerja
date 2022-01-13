@@ -1,58 +1,55 @@
 <?php
-    
-    defined('BASEPATH') OR exit('No direct script access allowed');
-    
-    class Kriteria_model extends CI_Model {
 
-        public function tampil()
-        {
-            $query = $this->db->get('kriteria');
-            return $query->result();
-        }
+defined('BASEPATH') or exit('No direct script access allowed');
 
-        public function getTotal()
-        {
-            return $this->db->count_all('kriteria');
-        }
+class Kriteria_model extends CI_Model
+{
 
-        public function insert($data = [])
-        {
-            $result = $this->db->insert('kriteria', $data);
-            return $result;
-        }
-
-        public function show($id_kriteria)
-        {
-            $this->db->where('id_kriteria', $id_kriteria);
-            $query = $this->db->get('kriteria');
-            return $query->row();
-        }
-
-        public function update($id_kriteria, $data = [])
-        {
-            $ubah = array(
-                'keterangan' => $data['keterangan'],
-                'kode_kriteria' => $data['kode_kriteria'],
-                'bobot'  => $data['bobot']
-            );
-
-            $this->db->where('id_kriteria', $id_kriteria);
-            $this->db->update('kriteria', $ubah);
-        }
-
-        public function delete($id_kriteria)
-        {
-            $this->db->where('id_kriteria', $id_kriteria);
-            $this->db->delete('kriteria');
-        }
-        public function get_kode() {
-            
-            $jumlah = $this->db->count_all('kriteria')+1;
-            return 'C'.$jumlah;
-            //  $row = $this->db->select("*")->limit(1)->order_by('id_kriteria',"DESC")->get("kriteria")->row();
-            //  return 'C'.$this->db->count_all('kriteria');
-            //return 'C'.$row->id_kriteria;
-        }
-       
+    public function tampil()
+    {
+        $query = $this->db->get('kriteria');
+        return $query->result();
     }
-    
+
+    public function getTotal()
+    {
+        return $this->db->count_all('kriteria');
+    }
+
+    public function insert($data = [])
+    {
+        $result = $this->db->insert('kriteria', $data);
+        return $result;
+    }
+
+    public function show($id_kriteria)
+    {
+        $this->db->where('id_kriteria', $id_kriteria);
+        $query = $this->db->get('kriteria');
+        return $query->row();
+    }
+
+    public function update($id_kriteria, $data = [])
+    {
+        $ubah = array(
+            'keterangan' => $data['keterangan'],
+            'kode_kriteria' => $data['kode_kriteria'],
+            'bobot'  => $data['bobot']
+        );
+
+        $this->db->where('id_kriteria', $id_kriteria);
+        $this->db->update('kriteria', $ubah);
+    }
+
+    public function delete($id_kriteria)
+    {
+        $this->db->where('id_kriteria', $id_kriteria);
+        $this->db->delete('kriteria');
+    }
+    public function get_kode()
+    {
+
+        $jumlah = $this->db->count_all('kriteria') + 1;
+        return 'C' . $jumlah;
+    }
+}

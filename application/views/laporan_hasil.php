@@ -20,13 +20,14 @@
 	}
 </style>
 
-<?php 
+<?php
 
-$path = base_url('assets/')."img/sinjai.png";
+$path = base_url('assets/') . "img/sinjai.png";
 $type = pathinfo($path, PATHINFO_EXTENSION);
 $data = file_get_contents($path);
 $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
 ?>
+
 <body>
 	<table style="width: 100%;">
 		<tr>
@@ -38,7 +39,7 @@ $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
 					LAPORAN HASIL PENILAIAN KINERJA PEGAWAI<br>
 					KANTOR BAPENDA KABUPATEN SINJAI
 				</span><br><br>
-				<span>Jl. Kemerdekaan, No. 27, Kec. Sinjai Selatan, Kab. Sinjai</span>
+				<span>Jl. Bulo Bulo Barat, Biringere, Sinjai Utara, Kabupaten Sinjai, Sulawesi Selatan 92615</span>
 			</td>
 		</tr>
 	</table>
@@ -64,10 +65,10 @@ $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
 			foreach ($hasil as $keys) : ?>
 				<tr align="center">
 					<!-- <td style="padding-left: 5px;"> -->
-						<?php
-						//$nip_alternatif = $this->Perhitungan_model->get_hasil_alternatif($keys->id_alternatif);
-						//echo $nip_alternatif['nip'];
-						?>
+					<?php
+					//$nip_alternatif = $this->Perhitungan_model->get_hasil_alternatif($keys->id_alternatif);
+					//echo $nip_alternatif['nip'];
+					?>
 
 					<td align="left" style="padding-left: 5px;">
 						<?php

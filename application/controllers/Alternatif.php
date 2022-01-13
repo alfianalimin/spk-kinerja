@@ -12,6 +12,8 @@ class Alternatif extends CI_Controller
         $this->load->library('form_validation');
         $this->load->model('Alternatif_model');
         $this->load->model('User_model');
+        date_default_timezone_set('Asia/Ujung_Pandang');
+
 
         if ($this->session->userdata('id_user_level') == "4") {
 ?>
@@ -27,7 +29,7 @@ class Alternatif extends CI_Controller
     {
         $id_user = $this->session->id_user;
         $user = $this->User_model->show($id_user);
-       
+
         if ($this->session->userdata('id_user_level') == "2") {
             $get_data = $this->Alternatif_model->tampil_where_bidang($user->posisi);
         } else {
@@ -37,7 +39,7 @@ class Alternatif extends CI_Controller
         $data = [
             'page' => "Alternatif",
             'list' => $get_data,
-            
+
         ];
 
         $this->load->view('alternatif/index', $data);
@@ -63,9 +65,9 @@ class Alternatif extends CI_Controller
             'alamat' => $this->input->post('alamat'),
         ];
 
-        $x='0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $username = substr(str_shuffle(str_repeat($x, ceil(8/strlen($x)) )),1,8);
-        
+        $x = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $username = substr(str_shuffle(str_repeat($x, ceil(8 / strlen($x)))), 1, 8);
+
         $data_user = [
             'id_user_level' => '4',
             'nama' => $this->input->post('nama'),
@@ -73,9 +75,10 @@ class Alternatif extends CI_Controller
             'email' => $this->input->post('email'),
             'username' => $username,
             'password' => md5('admin123'),
+            'tgl_daftar' => date("Y-m-d H:i:s")
         ];
 
-       // $this->form_validation->set_rules('nip', 'NIP', 'required');
+        // $this->form_validation->set_rules('nip', 'NIP', 'required');
         $this->form_validation->set_rules('nama', 'Nama', 'required');
 
         if ($this->form_validation->run() != false) {

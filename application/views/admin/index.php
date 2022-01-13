@@ -112,6 +112,9 @@
             <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
         </div>
     <?php } ?>
+
+
 </div>
+
 
 <?php $this->load->view('layouts/footer_admin'); ?>

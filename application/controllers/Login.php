@@ -1,8 +1,9 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Login extends CI_Controller {
+class Login extends CI_Controller
+{
     public function __construct()
     {
         parent::__construct();
@@ -10,15 +11,15 @@ class Login extends CI_Controller {
         $this->load->model('Login_model');
         $this->load->model('User_model');
         $this->load->model('Alternatif_model');
+        $this->load->model('Kriteria_model');
     }
     public function index()
     {
-        if($this->Login_model->logged_id())
-		{
-			redirect('Login/home');
-		}else{
-		$this->load->view('login');
-		}
+        if ($this->Login_model->logged_id()) {
+            redirect('Login/home');
+        } else {
+            $this->load->view('login');
+        }
     }
 
     public function login()
@@ -27,8 +28,7 @@ class Login extends CI_Controller {
         $password = $this->input->post('password');
         $passwordx = md5($password);
         $set = $this->Login_model->login($username, $passwordx);
-        if($set)
-        { 
+        if ($set) {
             $log = [
                 'id_user' => $set->id_user,
                 'username' => $set->username,
@@ -36,36 +36,32 @@ class Login extends CI_Controller {
                 'id_user_level' => $set->id_user_level,
                 'status' => 'Logged'
             ];
-            $this->session->set_userdata($log);            
+            $this->session->set_userdata($log);
             redirect('Login/home');
-          
-        }
-        else
-        {
+        } else {
             $this->session->set_flashdata('message', 'Username atau Password Salah');
             redirect('login');
         }
-        
     }
 
     public function logout()
-    { 
+    {
         $this->session->sess_destroy();
         redirect('login');
     }
 
     public function home()
-    { 
+    {
         $data = [
             'page' => "Dashboard",
             'total' => $this->User_model->getTotal(),
             'totalkepalabidang' => $this->User_model->getTotalKepalaBidang(),
-            'totalpimpinan' => $this->User_model->getTotalPimpinan(),
+            'totalkriteria' => $this->Kriteria_model->getTotal(),
             'totalpegawai' => $this->Alternatif_model->getTotalPegawai(),
             'totalalternatif' => $this->Alternatif_model->getTotal(),
             'totalhasil' => $this->Alternatif_model->getTotalAlternatifSelesaiDinilai(),
         ];
-		$this->load->view('admin/index', $data);
+        $this->load->view('admin/index', $data);
     }
 }
 

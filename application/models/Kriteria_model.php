@@ -53,5 +53,6 @@
             //  return 'C'.$this->db->count_all('kriteria');
             //return 'C'.$row->id_kriteria;
         }
+       
     }
     

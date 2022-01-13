@@ -49,10 +49,10 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">Pimpinan</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">Total kriteria</div>
                             </div>
                             <div class="col-auto">
-                                <i class="fa-2x text-gray-300"><?= $totalpimpinan; ?></i>
+                                <i class="fa-2x text-gray-300"><?= $totalkriteria; ?></i>
                             </div>
                         </div>
                     </div>

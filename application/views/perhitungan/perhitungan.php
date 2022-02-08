@@ -184,7 +184,7 @@
 									$data_pencocokan = $this->Perhitungan_model->data_nilai($keys->id_alternatif, $key->id_kriteria);
 									$min_max = $this->Perhitungan_model->get_max_min($key->id_kriteria);
 									$hasil_normalisasi = @(round(($data_pencocokan['nilai'] - $min_max['min']) / ($min_max['max'] - $min_max['min']), 4));
-									$bobot = $key->bobot/$totalbobot;
+									$bobot = $key->bobot / $totalbobot;
 									$nilai_total += $bobot * $hasil_normalisasi;
 
 									echo "(" . $bobot . "x" . $hasil_normalisasi . ") ";

@@ -38,13 +38,12 @@ class User extends CI_Controller
     {
         $data['page'] = "User";
         $data['user_level'] = $this->User_model->user_level();
-        $data['tgl_daftar'] = $this->User_model->get_date();
         $this->load->view('User/create', $data);
     }
 
     public function tambah()
     {
-        
+
         $data = [
             'id_user_level' => $this->input->post('privilege'),
             'nama' => $this->input->post('nama'),
@@ -102,7 +101,7 @@ class User extends CI_Controller
     {
         // TODO: implementasi update data berdasarkan $id_user
         $id_user = $this->input->post('id_user');
-        
+
         $data = array(
             'page' => "User",
             'id_user_level' => $this->input->post('privilege'),

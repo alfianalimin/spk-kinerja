@@ -20,7 +20,8 @@
 
 			<!-- <div class="form-group col-md-6">
 				<label class="font-weight-bold">NIP</label>
-				<input autocomplete="off" type="text" name="nip" value="<?php //echo $alternatif->nip ?>" required class="form-control" />
+				<input autocomplete="off" type="text" name="nip" value="<?php //echo $alternatif->nip 
+																		?>" required class="form-control" />
 			</div> -->
 
 			<div class="form-group col-md-6">
@@ -46,22 +47,23 @@
 				<select name="bidang" class="form-control" required>
 					<option value="">--Pilih Bidang--</option>
 					<option value="Sekretariat" <?php if ($alternatif->bidang == "Sekretariat") {
-												echo 'selected';
-											} ?>>Sekretariat</option>
+													echo 'selected';
+												} ?>>Sekretariat</option>
 					<option value="PBB-P2" <?php if ($alternatif->bidang == "PBB-P2") {
 												echo 'selected';
 											} ?>>PBB-P2</option>
 					<option value="Pajak Daerah" <?php if ($alternatif->bidang == "Pajak Daerah") {
-												echo 'selected';
-											} ?>>Pajak Daerah</option>
+														echo 'selected';
+													} ?>>Pajak Daerah</option>
 					<option value="Evaluasi" <?php if ($alternatif->bidang == "Evaluasi") {
-												echo 'selected';
-											} ?>>Evaluasi</option>
+													echo 'selected';
+												} ?>>Evaluasi</option>
 					<option value="Litbang" <?php if ($alternatif->bidang == "Litbang") {
 												echo 'selected';
 											} ?>>Litbang</option>
 				</select>
-				<!-- <input autocomplete="off" type="text" name="bidang" required value="<?php //echo $alternatif->bidang ?>" class="form-control" /> -->
+				<!-- <input autocomplete="off" type="text" name="bidang" required value="<?php //echo $alternatif->bidang 
+																							?>" class="form-control" /> -->
 			</div>
 
 			<div class="form-group col-md-6">
@@ -81,7 +83,7 @@
 		</div>
 	</div>
 	<div class="card-footer text-right">
-		<button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
+		<button type="submit" class="btn btn-success" onclick="return confirm ('Apakah anda yakin untuk menyimpan data ini')"><i class="fa fa-save"></i> Simpan</button>
 		<button type="reset" class="btn btn-info"><i class="fa fa-sync-alt"></i> Reset</button>
 	</div>
 	<?php echo form_close() ?>

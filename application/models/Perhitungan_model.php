@@ -17,13 +17,13 @@ class Perhitungan_model extends CI_Model
         return $query->result();
     }
     public function get_alternatif($bidang = null)
-    {       
-        if ($bidang) { 
+    {
+        if ($bidang) {
             $this->db->select('*');
             $this->db->from('alternatif');
             $this->db->where('bidang', $bidang);
             $data = $this->db->get();
-            return $data->result(); 
+            return $data->result();
         } else {
             $query = $this->db->query("SELECT * FROM alternatif");
             return $query->result();
@@ -51,7 +51,7 @@ class Perhitungan_model extends CI_Model
 
     public function get_hasil()
     {
-        $query = $this->db->query("SELECT * FROM hasil ORDER BY nilai DESC;");
+        $query = $this->db->query("SELECT * FROM hasil WHERE nilai LIKE '0%' ORDER BY nilai DESC ;");
         return $query->result();
     }
 

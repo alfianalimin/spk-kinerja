@@ -17,7 +17,7 @@ class Alternatif_model extends CI_Model
         $this->db->from('alternatif');
         $this->db->where('bidang', $bidang);
         $data = $this->db->get();
-        return $data->result();   
+        return $data->result();
     }
 
     public function getTotal()
@@ -27,7 +27,7 @@ class Alternatif_model extends CI_Model
         $data = $this->db->get('hasil');
         $hasil = 0;
         foreach ($data->result() as $dta) {
-            if($dta->nilai >= 0) {
+            if ($dta->nilai >= 0) {
                 $hasil += 1;
             }
         }

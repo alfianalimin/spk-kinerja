@@ -8,6 +8,7 @@ class User_model extends CI_Model
     public function tampil()
     {
         $query = $this->db->get('user');
+        $query = $this->db->query("SELECT * FROM user ORDER BY tgl_daftar DESC;");
         return $query->result();
     }
 
@@ -16,7 +17,7 @@ class User_model extends CI_Model
         return $this->db->count_all('user');
     }
 
-    public function getTotalKepalaBidang()
+    public function getTotalKepalabidang()
     {
         $this->db->select('id_user');
         $this->db->from('user');
@@ -86,5 +87,7 @@ class User_model extends CI_Model
         return $query->result();
     }
 }
+    
+    /* End of file Kategori_model.php */
     
     /* End of file Kategori_model.php */

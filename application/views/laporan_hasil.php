@@ -64,12 +64,7 @@ $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
 			$no = 1;
 			foreach ($hasil as $keys) : ?>
 				<tr align="center">
-					<!-- <td style="padding-left: 5px;"> -->
-					<?php
-					//$nip_alternatif = $this->Perhitungan_model->get_hasil_alternatif($keys->id_alternatif);
-					//echo $nip_alternatif['nip'];
-					?>
-
+					
 					<td align="left" style="padding-left: 5px;">
 						<?php
 						$nama_alternatif = $this->Perhitungan_model->get_hasil_alternatif($keys->id_alternatif);

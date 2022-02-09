@@ -40,12 +40,30 @@ class Perhitungan_model extends CI_Model
         return $query->row_array();
     }
 
+    public function get_bidang_user(){
+        $this->db->select('posisi');
+        $this->db->from('user');
+        $this->db->where('id_user', $this->session->userdata('id_user'));
+        $data = $this->db->get();
+        return $data->result();
+    }
+
     public function get_max_min($id_kriteria)
     {
-        $query = $this->db->query("SELECT max(sub_kriteria.nilai) as max, min(sub_kriteria.nilai) as min, sub_kriteria.nilai as nilai FROM `penilaian` 
-			JOIN sub_kriteria ON penilaian.nilai=sub_kriteria.id_sub_kriteria 
-			JOIN kriteria ON penilaian.id_kriteria=kriteria.id_kriteria 
-			WHERE penilaian.id_kriteria='$id_kriteria';");
+        if($this->session->userdata('id_user_level') == 2){
+            $data = $this->get_bidang_user();
+            $posisi = $data[0]->posisi;
+            $query = $this->db->query("SELECT max(sub_kriteria.nilai) as max, min(sub_kriteria.nilai) as min, sub_kriteria.nilai as nilai FROM `penilaian` 
+                JOIN sub_kriteria ON penilaian.nilai=sub_kriteria.id_sub_kriteria 
+                JOIN kriteria ON penilaian.id_kriteria=kriteria.id_kriteria 
+                JOIN alternatif ON penilaian.id_alternatif=alternatif.id_alternatif
+                WHERE penilaian.id_kriteria='$id_kriteria' AND alternatif.bidang='$posisi';");
+        }else{
+            $query = $this->db->query("SELECT max(sub_kriteria.nilai) as max, min(sub_kriteria.nilai) as min, sub_kriteria.nilai as nilai FROM `penilaian` 
+                JOIN sub_kriteria ON penilaian.nilai=sub_kriteria.id_sub_kriteria 
+                JOIN kriteria ON penilaian.id_kriteria=kriteria.id_kriteria 
+                WHERE penilaian.id_kriteria='$id_kriteria';");
+        }
         return $query->row_array();
     }
 
